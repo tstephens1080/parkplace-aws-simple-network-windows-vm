@@ -52,9 +52,9 @@ resource "aws_instance" "windows-server" {
   }
 }
 
-# Create Elastic IP for the EC2 instance
+#  Create Elastic IP for the EC2 instance
 resource "aws_eip" "windows-eip" {
-  vpc  = true
+  # Terraform will automatically determine the domain based on your VPC 
   tags = {
     Name        = "${lower(var.app_name)}-${var.app_environment}-windows-eip"
     Environment = var.app_environment
@@ -101,3 +101,4 @@ resource "aws_security_group" "aws-windows-sg" {
     Environment = var.app_environment
   }
 }
+
